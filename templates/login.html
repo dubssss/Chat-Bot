@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <link rel="stylesheet" type="text/css" href="static/stylelogin.css">
+</head>
+<body>
+
+<form class="box" action="{{url_for('uservalid')}}" method="post">
+    <h1>Login</h1>
+    <input type="text" name="username" placeholder="Username">
+    <input type="password" name="password" placeholder="Password">
+    <input type="submit" name="submit" value="Login">
+</form>
+
+</body>
+</html>
+
