@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello</title>
+    <link rel="stylesheet" type="text/css" href="static/stylechatbot.css">
+</head>
+<body>
+<div class="chatbox">
+    <div class="chatlogs">
+
+        <div class="chat friend">
+            <div class="user-photo"><img src="static/botface.jpg"></div>
+           <!-- <p class="chat-message">Hello, what would you like me to do for you?-->
+                <ul class="chat-message">
+                    <p>Hello, what would you like me to do?</p>
+                    <p>Please enter a valid option number: </p>
+                    <li>1. Print A</li>
+                    <li>2. Print B</li>
+                    <li>3. Print C</li>
+                </ul>
+           <!-- </p>-->
+        </div>
+        <div class="chat self">
+            <div class="user-photo"><img src="static/female.jpg"></div>
+            <p class="chat-message">{{msg}} </p>
+        </div>
+
+
+    </div>
+    <div class="chat-form">
+        <textarea id="userreply"></textarea>
+        <button onclick="getResponse()">Send</button>
+    </div>
+</div>
+</body>
+</html>
+
+<script type="text/javascript"> 
+    function getResponse(){
+
+    let result = document.getElementById('userreply').value;
+    let xhr = new XMLHttpRequest();
+    let url = "http://127.0.0.1:5000/userreply";
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.onreadystatechange = function () {
+        console.log(xhr.status)
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            document.getElementById('userreply').value  = xhr.responseText;
+        }
+    };
+
+    var data = JSON.stringify({ "msg": result});
+    xhr.send(data);
+}
+
+
+</script>
