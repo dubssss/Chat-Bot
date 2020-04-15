@@ -10,15 +10,18 @@ def uservalid():
     username=request.form.get("username")
     password=request.form.get("password")
     if (username=="anubha" and password=="dubey"):
-        return render_template('chatbot.html',msg="Hello, I am Anubha")
+        return render_template('chatbot.html')
     else:
         return "<h1>Incorect Credentials</h1>"
 
-@app.route('/userreply', methods=["POST","GET"])
-def userreply():
+@app.route('/processreply', methods=["POST","GET"])
+def processreply():
     jobject = request.json
     msg=(jobject['msg'])
-    return render_template('chatbot.html',msg=msg)
+    if (msg== "Hi" or msg=="Hey" or msg=="Hello" or msg=="HELLO" or msg=="HI" or msg=="HEY"):
+        return "hello"
+    else:
+        return "invalid"
     
 
 if __name__=="__main__":
