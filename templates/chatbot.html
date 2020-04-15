@@ -35,6 +35,25 @@
             <p class="chat-message">${userreply}</p>
             </div>`;
 
+
+    let xhr = new XMLHttpRequest();
+    let url = "http://127.0.0.1:5000/processreply";
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.onreadystatechange = function () {
+        console.log(xhr.status)
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            document.getElementById('chatlogs').innerHTML+= `<div class="chat friend">
+            <div class="user-photo"><img src="static/botface.jpg"></div>
+            <p class="chat-message">${xhr.responseText}</p>
+            </div>`;
+        }
+    };
+
+    var data = JSON.stringify({ "msg": userreply});
+    xhr.send(data);
+
+        /*
         if (userreply === `Hi` || userreply === `HI`|| userreply === `Hello` || userreply === `HELLO`) {
             document.getElementById('chatlogs').innerHTML+=`<div class="chat friend">
             <div class="user-photo"><img src="static/botface.jpg"></div>
@@ -46,8 +65,7 @@
             <div class="user-photo"><img src="static/botface.jpg"></div>
                  <p class="chat-message">Invalid input from user</p>
         </div>`;
-
         }
-        
+        */
     } 
 </script>
