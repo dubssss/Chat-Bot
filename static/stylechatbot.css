@@ -6,7 +6,7 @@
 }
 
 body {
-    background: #60a0a6;
+    background: #483c54;
 }
 .chatbox {
     width: 500px;
@@ -15,7 +15,6 @@ body {
     background: #fff;
     padding: 25px;
     margin: 20px auto;
-    box-shadow: 0 3px #ccc;
 }
 .chatlogs {
     padding: 10px;
@@ -63,11 +62,11 @@ body {
 }
 
 .friend .chat-message {
-    background: #14b9cc;
+    background: #231136;
 }
 
 .self .chat-message {
-    background: #80d6e0;
+    background: #503f63;
     order: -1;
 }
 
