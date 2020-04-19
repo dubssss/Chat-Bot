@@ -18,10 +18,19 @@ def uservalid():
 def processreply():
     jobject = request.json
     msg=(jobject['msg'])
-    if (msg== "Hi" or msg=="Hey" or msg=="Hello" or msg=="HELLO" or msg=="HI" or msg=="HEY"):
-        return "hello"
+    msg=msg.upper().rstrip()
+    botreply=str
+
+    if (msg== "HI" or msg=="HELLO" or msg=="HEY"):
+        botreply="Hello, please choose from one of the following: <br> 1. Send ExcelA <br>2. Send ExcelB"
+    elif (msg=="1"):
+        botreply="You selected option 1.<br>Thank you"
+    elif (msg=="2"):
+        botreply="You selected option 2.<br>Thank you"
     else:
-        return "invalid"
+        botreply="I don't understand this. Try again :) <br>Please choose from one of the following: <br>1. Send ExcelA <br>2. Send ExcelB"
+    return botreply
+
     
 
 if __name__=="__main__":
