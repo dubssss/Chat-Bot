@@ -24,10 +24,10 @@ def processreply():
     jobject = request.json
     msg = (jobject['msg'])
     msg = msg.upper().rstrip()
-    botreply = str
+
 
     if (msg == "HI" or msg == "HELLO" or msg == "HEY"):
-        return "Hello, please choose from one of the following: <br> 1. Send ExcelA <br>2. Send ExcelB "
+        return "Hello, please choose from one of the following: <br><br> 1. Send Excel_1 <br>2. Send Excel_2 "
     elif (msg == "1"):
         botreply="Received request for option 1. Thank you"
         return "Email sent for option 1",sendemailmsg.sendemailmsg("1")
@@ -35,8 +35,8 @@ def processreply():
         botreply="Received response for option 2. Thank you"
         return "Email sent for option 2",sendemailmsg.sendemailmsg("2")
     else:
-        botreply = "I don't understand this. Try again :) <br>Please choose from one of the following: <br>1. Send ExcelA <br>2. Send ExcelB"
-    return botreply
+        return "I don't understand this. Try again :) <br><br>Please choose from one of the following: <br>1. Send Excel_1 <br>2. Send Excel_2"
+
 
 @app.route('/logout',methods=["GET"])
 def logout():
