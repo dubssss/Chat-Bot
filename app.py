@@ -13,13 +13,22 @@ def home():
 def uservalid():
     if 'loggedin' in session:
         render_template('chatbot.html')
+    
     username = request.form.get("username")
     password = request.form.get("password")
-    if (username == "anubha" and password == "dubey"):
+    authorised_req={}
+    authorised_req=requesterlist.getdata()
+    
+    if authorised_req.get(username,0) == password:
         session['loggedin']=username
         return render_template('chatbot.html')
     else:
-        return "<h1>Incorrect Credentials</h1>"
+        return "<h1>Incorrect Credentials. Try again :) </h1>"
+    '''if (username == "anubha" and password == "dubey"):
+        session['loggedin']=username
+        return render_template('chatbot.html')
+    else:
+        return "<h1>Incorrect Credentials</h1>" '''
 
 @app.route('/processreply', methods=["POST", "GET"])
 def processreply():
